@@ -26,6 +26,12 @@ async function run() {
       res.send(result);
     });
 
+    app.get("/featuredRoommate", async (req, res) => {
+      const query = { available: "yes" };
+      const result = await roomCollection.find(query).limit(6).toArray();
+      res.send(result);
+    });
+
     app.post("/roomInfo", async (req, res) => {
       const roomDetails = req.body;
       const result = await roomCollection.insertOne(roomDetails);
