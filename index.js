@@ -63,6 +63,17 @@ async function run() {
       res.send(result);
     });
 
+    app.patch("/roomInfo/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const updatedFields = req.body;
+      const updateDoc = {
+        $set: updatedFields,
+      };
+      const result = await roomCollection.updateOne(query, updateDoc);
+      res.send(result);
+    });
+
     app.delete("/roomInfo/:id", async (req, res) => {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };
