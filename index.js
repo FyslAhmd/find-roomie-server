@@ -28,7 +28,7 @@ async function run() {
 
     app.get("/featuredRoommate", async (req, res) => {
       const query = { available: "yes" };
-      const result = await roomCollection.find(query).limit(6).toArray();
+      const result = await roomCollection.find(query).limit(8).toArray();
       res.send(result);
     });
 
